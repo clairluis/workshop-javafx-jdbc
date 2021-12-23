@@ -12,6 +12,7 @@ import java.util.Map;
 
 import db.DB;
 import db.DBException;
+import db.DBIntegrityException;
 import model.dao.SellerDao;
 import model.entities.Department;
 import model.entities.Seller;
@@ -98,7 +99,7 @@ public class SellerDaoJDBC implements SellerDao {
 			
 			st.executeUpdate();
 		} catch (SQLException ex) {
-			throw new DBException(ex.getMessage());
+			throw new DBIntegrityException(ex.getMessage());
 		} finally {
 			DB.closeStatement(st);
 		}
